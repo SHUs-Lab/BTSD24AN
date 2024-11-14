@@ -24,12 +24,20 @@ TPU architecture exploration was performed using Genetic Algorithm from [PyGAD](
 # How to run
 1. Install Scale-Sim
    
-   ```$ pip3 install scalesim```
+   ```
+   $ pip3 install scalesim
+   ```
 3. Install PyTorch, Transformers and PyGAD libraries
    
-   ```$ pip3 install torch transformers pygad```
-4. Run get_detr_csv.py to get the CSV architecture and then execute the Genetic Algorithm at dse.py
+   ```
+   $ pip3 install torch transformers pygad
+   ```
+5. Run get_detr_csv.py to get the CSV architecture and then execute the Genetic Algorithm at dse.py
    
-   ```$ python get_detr_csv.py```
+   ```
+   $ python get_detr_csv.py
+   ```
    
-   ```$ python dse.py```
+   ```
+   $ python dse.py
+   ```
