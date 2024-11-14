@@ -34,7 +34,7 @@ A working structure for a Dockerized application of this repository, with result
 
 ## Data Preprocessing, Testing, and Visualization using Notebooks
 
-Raw data were preprocessed and data statistics were extracted using the notebooks under the data_preparation subdirectory. Data are preprocessed and object jsons are created for each crop level to conform to the coco dataset spec. These notebooks should not be used on the preprocessed dataset, and are included to make reproduction from the initial raw dataset possible.
+Raw data were preprocessed and data statistics were extracted using the notebooks under the data_preparation subdirectory. Data are preprocessed and object jsons are created for each crop level to conform to the coco dataset spec. These notebooks should not be used on the preprocessed dataset, and are included to show the adaptation from the initial raw dataset.
 
 Testing performance is measured using the notebook under the tests subdirectory, and visualizations and graphs are generated using the visualization subdirectory.
 
@@ -63,6 +63,8 @@ To train from scratch, a binary DETR model can be built by passing ```num_classe
 ```torchrun main.py --coco_path /workspace/processed_data --output_dir /workspace/detr_output_scratch --num_workers 0 --batch_size 8 --crop 400 --num_classes 2```
 
 ## Dataset
+
+The full preprocessed dataset is available for download here: https://figshare.com/articles/dataset/Processed_Data_for_Exploration_of_TPU_Architectures_for_the_OptimizedTransformer_in_Drainage_Crossing_Detection_/27711249?file=50460957
 
 In order to test model transferrability to an unseen watershed, we first partition the data into the initial dataset and the transfer dataset.
 
