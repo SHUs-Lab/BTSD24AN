@@ -1,43 +1,38 @@
-TPU architecture exploration was performed using Genetic Algorithm from [PyGAD](https://pygad.readthedocs.io/en/latest/) library, while the latency evaluation was employed using the [Scale-Sim](https://github.com/scalesim-project/scale-sim-v2) tool.
+# Exploration of optimal TPU architecture for DETR DNN model
 
-* get_detr_csv.py &rarr;
+This project converts DETR (Detection Transformer) architecture into a format suitable for Scale-Sim simulation and finds optimal TPU architectures through Design Space Exploration using Genetic Algorithm.
 
-  Imports DETR model from pretrained models collection of "trasformers" library.
-                          Here, the Transformer architecture layers, like Encoder, Detection Head and Attention Pooling, are expressed as sets of Convolutional blocks.
-                          This happens, because Scale-Sim simulated models by their convolutional layers.
-                          Then, create the .csv file with all convolutional layers' parameters, as required for ScaleSim topology.
-
-* detr.csv &rarr; CSV file produced by get_detr_csv.py
-
-* dse.py &rarr;
-  1. Create the Design Space with different parameters for the Google TPU Architecture.
-     The configurable properties are:
-      * ArrayHeight and ArrayWidth, which are the Systollic array dimensions
-      * IfmapSramSzkB and FilterSramSzkB, are the sizes of memory for input feature map and filter
-      * OfmapSramSzkB, is the output feature map size
-      * Dataflow, which can be weight/input/output stationary
-      * Bandwidth, for the memory bandwidth in bytes
-      * MemoryBanks, which is the number of memory banks
-  2. Run ScaleSim for current TPU architecture instance and keep the total training latency, as fitness for the optimization algorithm.
-  3. Use PyGAD genetic algorithm to find the optimal solution, which will be the TPU architecture with the best performance (smallest latency).
-
-# How to run
-1. Install Scale-Sim
-   
-   ```
-   $ pip3 install scalesim
-   ```
-3. Install PyTorch, Transformers and PyGAD libraries
+## Installation
+1. Scale-Sim, a cycle-accurate simulation tool that estimates latency
+  ``
+    $ pip3 install scalesim
+  ``
+2. Required Python libraries to load pre-trained DETR and create the Genetic Algorithm
    
    ```
    $ pip3 install torch transformers pygad
    ```
-5. Run get_detr_csv.py to get the CSV architecture and then execute the Genetic Algorithm at dse.py
-   
-   ```
-   $ python get_detr_csv.py
-   ```
-   
-   ```
-   $ python dse.py
-   ```
+
+## Usage
+
+1. Generate DETR architecture CSV file
+```bash
+python get_detr_csv.py
+```
+This script:
+- Loads pretrained DETR model from Transformers library
+- Converts Transformer layers to custom convolutional representations
+- Generates a CSV file compatible with Scale-Sim
+
+2. Run Design Space Exploration
+```bash
+python dse.py
+```
+This script performs optimization using Genetic Algorithm to find optimal TPU configurations.
+
+## Files
+- `get_detr_csv.py`: Generates Scale-Sim compatible CSV from DETR architecture
+- `dse.py`: Design Space Exploration using Genetic Algorithm
+- `detr.csv`: CSV file produced by get_detr_csv.py
+TPU architecture exploration was performed using Genetic Algorithm from [PyGAD](https://pygad.readthedocs.io/en/latest/) library, while the latency evaluation was employed using the [Scale-Sim](https://github.com/scalesim-project/scale-sim-v2) tool.
+
