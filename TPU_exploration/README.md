@@ -1,5 +1,13 @@
 TPU architecture exploration was performed using Genetic Algorithm from [PyGAD](https://pygad.readthedocs.io/en/latest/) library, while the latency evaluation was employed using the [Scale-Sim](https://github.com/scalesim-project/scale-sim-v2) tool.
 
+# How to run
+1. Install Scale-Sim
+   ```$ pip3 install scalesim```
+2. Install PyTorch, Transformers and PyGAD libraries
+   ```$ pip3 install torch transformers pygad```
+3. Run get_detr_csv.py to get the CSV architecture and then execute the Genetic Algorithm at dse.py
+   ```$ python get_detr_csv.py```
+   ```$ python dse.py```
 
 * get_detr_csv.py &rarr;
 
