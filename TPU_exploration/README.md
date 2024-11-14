@@ -5,9 +5,10 @@ This project converts DETR (Detection Transformer) architecture into a format su
 ## Installation
 1. Scale-Sim, a cycle-accurate simulation tool that estimates latency
    
-  ``
+  ```
     $ pip3 install scalesim
-  ``
+  ```
+  
 3. Required Python libraries to load pre-trained DETR and create the Genetic Algorithm
    
    ```
