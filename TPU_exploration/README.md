@@ -1,14 +1,5 @@
 TPU architecture exploration was performed using Genetic Algorithm from [PyGAD](https://pygad.readthedocs.io/en/latest/) library, while the latency evaluation was employed using the [Scale-Sim](https://github.com/scalesim-project/scale-sim-v2) tool.
 
-# How to run
-1. Install Scale-Sim
-   ```$ pip3 install scalesim```
-2. Install PyTorch, Transformers and PyGAD libraries
-   ```$ pip3 install torch transformers pygad```
-3. Run get_detr_csv.py to get the CSV architecture and then execute the Genetic Algorithm at dse.py
-   ```$ python get_detr_csv.py```
-   ```$ python dse.py```
-
 * get_detr_csv.py &rarr;
 
   Imports DETR model from pretrained models collection of "trasformers" library.
@@ -29,3 +20,16 @@ TPU architecture exploration was performed using Genetic Algorithm from [PyGAD](
       * MemoryBanks, which is the number of memory banks
   2. Run ScaleSim for current TPU architecture instance and keep the total training latency, as fitness for the optimization algorithm.
   3. Use PyGAD genetic algorithm to find the optimal solution, which will be the TPU architecture with the best performance (smallest latency).
+
+# How to run
+1. Install Scale-Sim
+   
+   ```$ pip3 install scalesim```
+3. Install PyTorch, Transformers and PyGAD libraries
+   
+   ```$ pip3 install torch transformers pygad```
+4. Run get_detr_csv.py to get the CSV architecture and then execute the Genetic Algorithm at dse.py
+   
+   ```$ python get_detr_csv.py```
+   
+   ```$ python dse.py```
