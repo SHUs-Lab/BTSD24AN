@@ -1,6 +1,8 @@
 import pygad
 import numpy as np
 import scalesim
+import subprocess
+import time
 from configparser import ConfigParser
 import os
 import pandas as pd
@@ -55,7 +57,18 @@ def fitness_function(ga_instance, solution, solution_idx):
 
     # build the Scale-Sim command and run the simulation
     command = f"python scalesim/scale.py -c dse_results/google.cfg -t dse_results/detr.csv -p dse_results"
-    os.system(command)
+    #os.system(command)
+    process = subprocess.Popen(
+            ["python", "scalesim/scale.py", 
+             "-c", "dse_results/google.cfg",
+             "-t", "dse_results/detr.csv",
+             "-p", "dse_results"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+    stdout, stderr = process.communicate()  # Wait for completion
+    if process.returncode != 0:
+        raise RuntimeError(f"Simulation failed with error: {stderr.decode()}")
 
     # get only the total cycles number from simulation results
     results = pd.read_csv(f'dse_results/{experiment_name}/COMPUTE_REPORT.csv')
