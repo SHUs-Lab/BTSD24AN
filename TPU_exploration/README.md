@@ -1,3 +1,10 @@
+* get_detr_csv.py &rarr; Imports DETR model from pretrained models collection of "trasformers" library.
+  Here, the Transformer architecture layers, like Encoder, Detection Head and Attention Pooling, are expressed as sets of Convolutional blocks.
+  This happens, because Scale-Sim simulated models by their convolutional layers.
+  Then, create the .csv file with all convolutional layers' parameters, as required for ScaleSim topology.
+
+* detr.csv &rarr; CSV file produced by get_detr_csv.py
+
 * dse.py &rarr;
   1. Create the Design Space with different parameters for the Google TPU Architecture.
      The configurable properties are:
