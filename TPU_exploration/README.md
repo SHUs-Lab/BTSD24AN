@@ -1,3 +1,6 @@
+TPU architecture exploration was performed using Genetic Algorithm from [PyGAD](https://pygad.readthedocs.io/en/latest/) library, while the latency evaluation was employed using the [Scale-Sim](https://github.com/scalesim-project/scale-sim-v2) tool.
+
+
 * get_detr_csv.py &rarr;
 
   Imports DETR model from pretrained models collection of "trasformers" library.
